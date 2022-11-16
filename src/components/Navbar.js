@@ -1,4 +1,4 @@
-import { AppBar, makeStyles, Toolbar, IconButton } from "@material-ui/core";
+import { AppBar, makeStyles, Toolbar, IconButton, Divider, ListItem, ListItemIcon } from "@material-ui/core";
 import List from "@mui/material/List";
 
 import logo from "../images/portafolio.png";
@@ -9,9 +9,8 @@ import HomeRepairServiceOutlinedIcon from "@mui/icons-material/HomeRepairService
 import RecentActorsOutlinedIcon from "@mui/icons-material/RecentActorsOutlined";
 import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 import MenuIcon from "@mui/icons-material/Menu";
-
 import { Drawer } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const links = [
   {
@@ -38,7 +37,7 @@ const links = [
 
 const Navbar = () => {
   const classes = useStyles();
-  const [open, setOpen] = (useState = false);
+  const [open, setOpen] = useState(true);
   return (
     <>
       <AppBar position="sticky" className={classes.root}>
@@ -74,6 +73,30 @@ const Navbar = () => {
         <IconButton>
             <CancelPresentationIcon />
         </IconButton>
+        <Divider/>
+        {
+              //libreria react-scroll
+              links.map(({ id, text, icon }, index) => (
+                <Link
+                  key={index} //este link me permite que ar darle click me dirija a section correspondiente
+                  to={id} //Destino al que desplazarse
+                  spy={true} //Hacer que el enlace esté seleccionado cuando el desplazamiento esté en su posición de destino
+                  activeClass="active" //	clase aplicada cuando se alcanza el elemento
+                  smooth={true} //Animar el desplazamiento
+                  duration={500} //tiempo de la animación de desplazamiento: puede ser un número o una función (`function (scrollDistanceInPx) { return duration; }`), que permite un control más granular en tiempo de ejecución
+                  offset={-70} //offset Desplazar px adicional (como relleno)
+                >
+                  <ListItem>
+                    <span>
+                      <ListItemIcon>
+                        {icon}
+                      </ListItemIcon>
+                    </span >{text}
+                  </ListItem>
+                </Link>
+              ))
+            }
+
       </Drawer>
     </>
   );
