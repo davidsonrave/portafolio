@@ -16,22 +16,22 @@ const links = [
   {
     id: "about",
     text: "About Me",
-    icon: <InfoOutlinedIcon />,
+    icon: <InfoOutlinedIcon fontSize="large"/>,
   },
   {
     id: "Skills",
     text: "Skills",
-    icon: <PsychologyOutlinedIcon />,
+    icon: <PsychologyOutlinedIcon fontSize="large" />,
   },
   {
     id: "work",
     text: "My Work",
-    icon: <HomeRepairServiceOutlinedIcon />,
+    icon: <HomeRepairServiceOutlinedIcon fontSize="large"/>,
   },
   {
     id: "contact",
     text: "Get in touch",
-    icon: <RecentActorsOutlinedIcon />,
+    icon: <RecentActorsOutlinedIcon fontSize="large" />,
   },
 ];
 
@@ -70,15 +70,15 @@ const Navbar = () => {
         anchor="right"
         open={open}
         onClose={() => setOpen(false)}>
-        <IconButton>
-            <CancelPresentationIcon />
+        <IconButton onClick={()=>setOpen(false)} className={classes.cancelicon}>
+            <CancelPresentationIcon  fontSize="large"/>
         </IconButton>
         <Divider/>
         {
               //libreria react-scroll
               links.map(({ id, text, icon }, index) => (
-                <Link
-                  key={index} //este link me permite que ar darle click me dirija a section correspondiente
+                <Link key={index} //este link me permite que ar darle click me dirija a section correspondiente
+                  className={classes.sidebar}
                   to={id} //Destino al que desplazarse
                   spy={true} //Hacer que el enlace esté seleccionado cuando el desplazamiento esté en su posición de destino
                   activeClass="active" //	clase aplicada cuando se alcanza el elemento
@@ -86,7 +86,7 @@ const Navbar = () => {
                   duration={500} //tiempo de la animación de desplazamiento: puede ser un número o una función (`function (scrollDistanceInPx) { return duration; }`), que permite un control más granular en tiempo de ejecución
                   offset={-70} //offset Desplazar px adicional (como relleno)
                 >
-                  <ListItem>
+                  <ListItem component="h5">
                     <span>
                       <ListItemIcon>
                         {icon}
@@ -149,6 +149,28 @@ const useStyles = makeStyles((theme) => ({
       right: 10,
     },
   },
+  cancelicon:{
+    color: "tomato",
+    position: "absolute",
+    top: 0,
+    right: 10
+  },
+  sidebar:{
+    width:"40vw",
+    [theme.breakpoints.down("sm")]: {
+      width: "60vw",
+    },
+    "& h5":{
+      margin: theme.spacing(10,0,0,4),
+      fontSize: "1.4rem",
+      color: "#333",
+      fontWeight: "bold",
+    },
+    "& h5:hover":{
+      color: "tomato",
+      cursor: "pointer", // permite que el cursor del mouse
+    }
+  }
 }));
 
 export default Navbar;
