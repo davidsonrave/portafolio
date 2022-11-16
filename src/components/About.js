@@ -1,12 +1,7 @@
-import {
-  makeStyles,
-  Typography,
-  Card,
-  CardMedia,
-  CardContent,
-} from "@material-ui/core";
+import {makeStyles,Typography,Card,CardMedia,CardContent,} from "@material-ui/core";
 import React from "react";
 import dragon from "../images/dragon.jpeg";
+import TypeWriteEffect from 'react-typewriter-effect'
 
 const About = ({ title, dark, id }) => {
   const classes = useStyles();
@@ -16,7 +11,17 @@ const About = ({ title, dark, id }) => {
         <Typography variant="h3">{title}</Typography>
         <Card className={classes.card}>
           <CardMedia image={dragon} className={classes.media} title="picture" />
-          <CardContent className={classes.cardcontent}>contenido</CardContent>
+          <CardContent className={classes.cardcontent}>
+            <TypeWriteEffect
+             text="Hi, I am Davidson Rave"
+             textStyle={{fontSize:"2rem", fonrWeight:"700px", color:"tomato"}}
+             startDelay={100}
+             cursorColor="black"
+             typeSpeed={100}
+            
+            />
+          
+          </CardContent>
         </Card>
       </div>
     </div>

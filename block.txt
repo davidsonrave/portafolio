@@ -1,0 +1,2 @@
+yarn add react-typewriter-effect
+libreria para crear el efecto de impresion
