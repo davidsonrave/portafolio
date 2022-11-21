@@ -1,7 +1,9 @@
-import {makeStyles,Typography,Card,CardMedia,CardContent,} from "@material-ui/core";
+import {makeStyles,Typography,Card,CardMedia,CardContent, CardActions} from "@material-ui/core";
 import React from "react";
 import dragon from "../images/dragon.jpeg";
 import TypeWriteEffect from 'react-typewriter-effect'
+import { Button } from "react-scroll";
+import pdf from "../images/cv.pdf";
 
 const About = ({ title, dark, id }) => {
   const classes = useStyles();
@@ -20,8 +22,24 @@ const About = ({ title, dark, id }) => {
              typeSpeed={100}
             
             />
+             <TypeWriteEffect
+             text="And I am an awesome front End Developer"
+             textStyle={{fontSize:"1.2rem", fonrWeight:"500px"}}
+             startDelay={2500}
+             cursorColor="black"
+             typeSpeed={100}
+            
+            />
           
           </CardContent>
+          <CardActions>
+            <Button variant="contained" className={classes.pdfbutton}>
+              <a href={pdf} download>
+                  Dowmload Cv
+              </a>
+              
+              </Button>
+          </CardActions>
         </Card>
       </div>
     </div>
